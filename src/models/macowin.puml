@@ -1,0 +1,95 @@
+@startuml
+class Commerce {
+    - List<Sale> sales
+    + Commerce()
+    + AddSale(Sale sale)
+    + getProfitByDate(LocalDate date): Double
+}
+
+class Sale {
+    - List<Garment> garments
+    - LocalDate date
+    - Payment payment
+    + Sale(List<Garment> garments, Payment payment, LocalDate date)
+    + getTotalPrice(): Double
+    + getQuantityItems(): Integer
+    + getDate(): LocalDate
+}
+
+interface Payment {
+    + getRecharge(price: Double, totalItems: Integer): Double
+}
+
+class CreditPayment {
+    - Integer quotes
+    - Double coefficient
+    - Double rechargeItem
+    + CreditPayment(Integer quotes, Double coefficient)
+    + getRecharge(price: Double, totalItems: Integer): Double
+}
+
+class CashPayment {
+    + getRecharge(baseTotalPrice: Double, quantityItems: Integer): Double
+}
+
+class DebitPayment {
+    + getRecharge(baseTotalPrice: Double, quantityItems: Integer): Double
+}
+
+class Garment {
+    - String name
+    - Double basePrice
+    - Type type
+    - State state
+    + Garment(String name, Double basePrice, Type type, State state)
+    + getPrice(): Double
+    + setState(State state): void
+    + getName(): String
+    + getType(): Type
+}
+
+enum Type {
+    SACO
+    PANTALON
+    CAMISA
+}
+
+interface State {
+    + getPrice(basePrice: Double): Double
+}
+
+class ClearanceState {
+    - Double percentage
+    + ClearanceState()
+    + getPrice(basePrice: Double): Double
+}
+
+class NewState {
+    + getPrice(basePrice: Double): Double
+}
+
+class PromotionState {
+    - Double discount
+    + PromotionState(Double discount)
+    + getPrice(basePrice: Double): Double
+}
+
+
+Commerce *-->  Sale
+
+CashPayment ..|> Payment
+DebitPayment ..|> Payment
+CreditPayment ..|> Payment
+
+Sale  *-->  Garment
+Sale  -->  Payment
+
+Garment  -->  Type
+
+Garment  --> State
+
+NewState ..|> State
+PromotionState ..|> State
+ClearanceState ..|> State
+
+@enduml
