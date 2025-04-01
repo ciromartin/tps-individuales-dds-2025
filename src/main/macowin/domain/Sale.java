@@ -24,7 +24,7 @@ public class Sale {
 
     public Double getTotalPrice() {
         Double baseTotalPrice = garments.stream().mapToDouble(Garment::getPrice).sum();
-        Double recharge = payment.getRecharge(baseTotalPrice, getQuantityItems());
+        Double recharge = payment.getRecharge(garments);
         return baseTotalPrice + recharge;
     }
 

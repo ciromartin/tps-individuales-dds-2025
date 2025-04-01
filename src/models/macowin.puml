@@ -17,7 +17,7 @@ class Sale {
 }
 
 interface Payment {
-    + getRecharge(price: Double, totalItems: Integer): Double
+    + getRecharge(garments: List<Garment>): Double
 }
 
 class CreditPayment {
@@ -25,15 +25,15 @@ class CreditPayment {
     - Double coefficient
     - Double rechargeItem
     + CreditPayment(Integer quotes, Double coefficient)
-    + getRecharge(price: Double, totalItems: Integer): Double
+    + getRecharge(garments: List<Garment>): Double
 }
 
 class CashPayment {
-    + getRecharge(baseTotalPrice: Double, quantityItems: Integer): Double
+    + getRecharge(garments: List<Garment>): Double
 }
 
 class DebitPayment {
-    + getRecharge(baseTotalPrice: Double, quantityItems: Integer): Double
+    + getRecharge(garments: List<Garment>): Double
 }
 
 class Garment {
