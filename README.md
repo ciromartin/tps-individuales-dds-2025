@@ -14,6 +14,12 @@ Entrega individual para TP Macowin.
 - `src/main/macowin/domain`: Contiene las clases principales del dominio.
 - `src/models/macowin.puml`: Diagrama UML.
 
+## Configuración del Proyecto
+
+El proyecto utiliza IntelliJ IDEA como entorno de desarrollo integrado (IDE).
+
+
+
 ## Identificar Requerimientos
 
 #### Tipos de Prenda  
@@ -42,7 +48,7 @@ El precio de una prenda depende de su estado:
   - `Tarjeta Crédito`: Tiene un recargo adicional:
     - `Fórmula`: (cantidad de cuotas * coeficiente fijo) + (0.01 * precio de cada prenda).
 
+#### Cálculo de Ganancias
 
-## Configuración del Proyecto
+- Calcular las `ganancias totales` de un `día específico` en base a las ventas registradas.
 
-El proyecto utiliza IntelliJ IDEA como entorno de desarrollo integrado (IDE).
